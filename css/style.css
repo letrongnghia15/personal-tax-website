@@ -404,6 +404,7 @@ section { padding: 96px 0; }
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  min-height: 240px;
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 .service-card .service-link {
@@ -746,7 +747,7 @@ section { padding: 96px 0; }
 }
 .service-detail {
   display: grid;
-  grid-template-columns: 80px 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 32px;
   align-items: flex-start;
   background: #fff;
