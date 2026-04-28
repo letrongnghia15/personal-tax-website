@@ -1,5 +1,5 @@
 // =========================================================
-// Meridian Tax Services — main.js
+// Sea Tax Services — main.js
 // Vanilla JS, no dependencies. IE11+ ES2015 features only.
 // =========================================================
 
@@ -217,14 +217,33 @@
         return;
       }
 
-      // Simulated success (static site, no backend)
-      // If you've wired up Formspree (see contact.html), replace this block
-      // with a fetch() to the Formspree endpoint.
-      form.style.display = 'none';
-      if (success) {
-        success.classList.add('visible');
-        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
+      var submitBtn = form.querySelector('.form-submit');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: new FormData(form)
+      })
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        if (data.success) {
+          form.style.display = 'none';
+          if (success) {
+            success.classList.add('visible');
+            success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        } else {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+          alert('Something went wrong. Please try again or call us at (206) 656-8685.');
+        }
+      })
+      .catch(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+        alert('Something went wrong. Please try again or call us at (206) 656-8685.');
+      });
     });
   }());
 

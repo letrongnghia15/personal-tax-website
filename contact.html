@@ -46,20 +46,10 @@
     <section>
       <div class="container">
         <div class="contact-grid">
-          <!--
-            =========================================================
-            FORMSPREE INTEGRATION (Free tier — 50 submissions/month)
-            ---------------------------------------------------------
-            To hook this form up to email delivery:
-            1. Sign up at https://formspree.io (free)
-            2. Create a new form, copy your endpoint URL (e.g. https://formspree.io/f/xyzabcde)
-            3. Replace action="#" below with action="https://formspree.io/f/YOUR_ID"
-            4. Change method="post" attribute on the form tag (already set)
-            5. Remove the JS preventDefault/success-message handler in main.js
-               OR keep it and add `data-formspree="true"` to the form.
-            =========================================================
-          -->
-          <form class="contact-form" id="contact-form" action="#" method="post" novalidate>
+          <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="post" novalidate>
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
+            <input type="hidden" name="subject" value="New Contact — Sea Tax Services" />
+            <input type="hidden" name="from_name" value="Sea Tax Services Website" />
             <h2 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 8px;">Send a message</h2>
             <p style="color: var(--color-gray-600); margin-bottom: 24px; font-size: 15px;">All fields marked with <span style="color: var(--color-gold);">*</span> are required.</p>
             <div class="form-row">
