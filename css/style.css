@@ -746,7 +746,7 @@ section { padding: 96px 0; }
 }
 .service-detail {
   display: grid;
-  grid-template-columns: 80px 1fr auto;
+  grid-template-columns: 1fr auto;
   gap: 32px;
   align-items: flex-start;
   background: #fff;
