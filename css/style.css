@@ -180,7 +180,17 @@ section { padding: 96px 0; }
 .footer-brand .logo-name {
   color: #fff;
 }
-.logo > span { position: relative; }
+.logo > span { position: relative; padding-right: 8px; }
+.logo > span::after {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  margin-left: 4px;
+  vertical-align: baseline;
+}
 .logo-sub {
   display: block;
   font-family: var(--font-body);
