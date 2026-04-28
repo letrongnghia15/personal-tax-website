@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Meridian Tax Services</title>
+  <meta name="description" content="Get in touch with Meridian Tax Services for a free tax consultation. Phone, email, and secure contact form. Virtual appointments available nationwide." />
+  <meta name="keywords" content="contact tax preparer, free tax consultation, schedule tax appointment, tax advisor" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact — Meridian Tax Services" />
+  <meta property="og:description" content="Get in touch for a free consultation. Same-business-day response." />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A2B4A'/%3E%3Ctext x='50%25' y='55%25' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='middle'%3EM%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" class="logo"><span>Meridian<span class="logo-sub">Tax Services</span></span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="contact.html" class="btn btn-primary nav-cta">Free Consultation</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span>Contact</div>
+          <span class="eyebrow">Get in Touch</span>
+          <h1>Let's get your taxes <em>handled</em>.</h1>
+          <p>Fill out the form below, send us an email, or give us a call. We respond to every inquiry within one business day — usually much sooner.</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <div class="contact-grid">
+          <!--
+            =========================================================
+            FORMSPREE INTEGRATION (Free tier — 50 submissions/month)
+            ---------------------------------------------------------
+            To hook this form up to email delivery:
+            1. Sign up at https://formspree.io (free)
+            2. Create a new form, copy your endpoint URL (e.g. https://formspree.io/f/xyzabcde)
+            3. Replace action="#" below with action="https://formspree.io/f/YOUR_ID"
+            4. Change method="post" attribute on the form tag (already set)
+            5. Remove the JS preventDefault/success-message handler in main.js
+               OR keep it and add `data-formspree="true"` to the form.
+            =========================================================
+          -->
+          <form class="contact-form" id="contact-form" action="#" method="post" novalidate>
+            <h2 style="font-family: var(--font-heading); font-size: 24px; margin-bottom: 8px;">Send a message</h2>
+            <p style="color: var(--color-gray-600); margin-bottom: 24px; font-size: 15px;">All fields marked with <span style="color: var(--color-gold);">*</span> are required.</p>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="name">Full Name <span class="required">*</span></label>
+                <input type="text" id="name" name="name" required autocomplete="name" />
+                <span class="form-error">Please enter your full name.</span>
+              </div>
+              <div class="form-field">
+                <label for="email">Email <span class="required">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email" />
+                <span class="form-error">Please enter a valid email address.</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-field">
+                <label for="phone">Phone</label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" />
+                <span class="form-error">Please enter a valid phone number.</span>
+              </div>
+              <div class="form-field">
+                <label for="tax-year">Tax Year(s) Needed</label>
+                <input type="text" id="tax-year" name="tax-year" placeholder="e.g., 2024" />
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="return-type">Type of Return <span class="required">*</span></label>
+              <select id="return-type" name="return-type" required>
+                <option value="">Select one...</option>
+                <option value="individual-simple">Individual — Simple (W-2 only)</option>
+                <option value="individual-standard">Individual — Standard (itemized / self-employed)</option>
+                <option value="individual-premium">Individual — Premium (multi-state / rental / K-1)</option>
+                <option value="small-business-llc">Small Business — LLC</option>
+                <option value="small-business-scorp">Small Business — S-Corp</option>
+                <option value="small-business-partnership">Small Business — Partnership</option>
+                <option value="back-taxes">Back Taxes / IRS Issue</option>
+                <option value="planning">Tax Planning / Consulting</option>
+                <option value="bookkeeping">Bookkeeping</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+              <span class="form-error">Please select the type of return.</span>
+            </div>
+            <div class="form-field">
+              <label for="message">Message <span class="required">*</span></label>
+              <textarea id="message" name="message" required placeholder="Tell us a bit about your situation..."></textarea>
+              <span class="form-error">Please include a brief message.</span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg form-submit">Send Message</button>
+          </form>
+          <div class="form-success" id="form-success" role="status" aria-live="polite">
+            <h3>Thank you! 🎉</h3>
+            <p>We've received your message and will be in touch within 1 business day. If your matter is urgent, give us a call at (555) 123-4567.</p>
+          </div>
+
+          <aside class="contact-info">
+            <h2>Other ways to reach us</h2>
+            <p>Prefer the phone or email? We're happy either way. Virtual appointments available nationwide.</p>
+            <ul class="contact-methods">
+              <li class="contact-method">
+                <div class="contact-icon">✆</div>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:+15551234567">(555) 123-4567</a>
+                </div>
+              </li>
+              <li class="contact-method">
+                <div class="contact-icon">✉</div>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:hello@meridiantax.com">hello@meridiantax.com</a>
+                </div>
+              </li>
+              <li class="contact-method">
+                <div class="contact-icon">⌚</div>
+                <div>
+                  <strong>Office Hours</strong>
+                  <span>Mon–Fri, 9am–6pm Pacific<br />Extended hours in tax season</span>
+                </div>
+              </li>
+              <li class="contact-method">
+                <div class="contact-icon">📍</div>
+                <div>
+                  <strong>Location</strong>
+                  <span>Virtual-friendly, based in Bothell, WA.<br />Serving clients nationwide.</span>
+                </div>
+              </li>
+            </ul>
+            <div>
+              <strong style="display:block; font-size:13px; text-transform:uppercase; letter-spacing:0.06em; color: var(--color-gray-600); margin-bottom:12px;">Connect</strong>
+              <div class="social-links">
+                <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                <a href="#" class="social-link" aria-label="Facebook">f</a>
+                <a href="#" class="social-link" aria-label="Google Business">G</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><span>Meridian<span class="logo-sub">Tax Services</span></span></a>
+          <p>Accurate, personal, and proactive tax preparation for individuals and small businesses across the country.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Individual Returns</a></li>
+            <li><a href="services.html">Small Business</a></li>
+            <li><a href="services.html">Tax Planning</a></li>
+            <li><a href="services.html">Back Taxes</a></li>
+            <li><a href="services.html">Bookkeeping</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul class="footer-contact">
+            <li><span class="contact-icon">✆</span><span>(555) 123-4567</span></li>
+            <li><span class="contact-icon">✉</span><span>hello@meridiantax.com</span></li>
+            <li><span class="contact-icon">⌚</span><span>Mon–Fri, 9am–6pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; <span id="current-year">2025</span> Meridian Tax Services. All rights reserved.</div>
+        <div><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></div>
+      </div>
+      <p class="footer-disclaimer">Meridian Tax Services is an IRS Authorized e-File Provider. All tax preparation is performed by credentialed professionals. Pricing starts at indicated rates and may vary based on return complexity.</p>
+    </div>
+  </footer>
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>
