@@ -402,7 +402,12 @@ section { padding: 96px 0; }
   padding: 40px 32px;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+.service-card .service-link {
+  margin-top: auto;
 }
 .service-card::before {
   content: '';
