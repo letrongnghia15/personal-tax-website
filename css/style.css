@@ -951,6 +951,30 @@ section { padding: 96px 0; }
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
+.about-photo-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 24px;
+  background: linear-gradient(to top, rgba(26, 43, 74, 0.92) 0%, rgba(26, 43, 74, 0.6) 70%, transparent 100%);
+  text-align: center;
+}
+.about-photo-name {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+.about-photo-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-top: 4px;
+}
 .about-body p {
   color: var(--color-gray-700);
   margin-bottom: 20px;
