@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Intake Form — Sea Tax Services</title>
+  <meta name="description" content="New client intake form for Sea Tax Services. Securely submit your tax information to get started with your return." />
+  <meta name="keywords" content="tax intake form, new client tax form, tax document submission, Sea Tax Services intake" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seataxservices.com/intake.html" />
+  <meta property="og:title" content="Client Intake Form — Sea Tax Services" />
+  <meta property="og:description" content="Submit your tax information securely to get started with Sea Tax Services." />
+  <meta property="og:image" content="https://seataxservices.com/images/Nghia.png" />
+  <link rel="canonical" href="https://seataxservices.com/intake.html" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A2B4A'/%3E%3Ctext x='50%25' y='55%25' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ---- Intake page overrides ---- */
+    .intake-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .intake-intro {
+      background: var(--color-navy);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      border-left: 4px solid var(--color-gold);
+    }
+    .intake-intro h2 {
+      color: var(--color-gold);
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .intake-intro p {
+      color: rgba(255,255,255,0.85);
+      font-size: 16px;
+      margin: 0;
+      line-height: 1.6;
+    }
+    .intake-badges {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-width: 160px;
+    }
+    .intake-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.8);
+      font-weight: 500;
+    }
+    .intake-badge-icon {
+      color: var(--color-gold);
+      font-size: 16px;
+    }
+
+    /* ---- Google Form embed ---- */
+    .gform-container {
+      background: #fff;
+      border: 1px solid var(--color-gray-200);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .gform-container iframe {
+      width: 100%;
+      min-height: 1800px;
+      border: none;
+      display: block;
+    }
+
+    /* ---- Setup placeholder (shown until Google Form is embedded) ---- */
+    .gform-placeholder {
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .gform-placeholder-icon {
+      font-size: 56px;
+      margin-bottom: 20px;
+      display: block;
+    }
+    .gform-placeholder h3 {
+      font-size: 24px;
+      color: var(--color-navy);
+      margin-bottom: 12px;
+    }
+    .gform-placeholder p {
+      color: var(--color-gray-600);
+      max-width: 480px;
+      margin: 0 auto 28px;
+    }
+    .setup-steps {
+      text-align: left;
+      background: var(--color-bg);
+      border-radius: var(--radius-md);
+      padding: 28px 32px;
+      max-width: 560px;
+      margin: 0 auto 28px;
+    }
+    .setup-steps h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-gold);
+      margin-bottom: 16px;
+    }
+    .setup-steps ol {
+      list-style: decimal;
+      padding-left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .setup-steps ol li {
+      font-size: 15px;
+      color: var(--color-gray-700);
+      line-height: 1.5;
+    }
+    .setup-steps ol li strong {
+      color: var(--color-navy);
+    }
+    .setup-steps code {
+      background: #fff;
+      border: 1px solid var(--color-gray-200);
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 13px;
+      color: var(--color-navy);
+    }
+
+    /* ---- Alternative contact strip ---- */
+    .intake-alt {
+      margin-top: 40px;
+      padding: 32px 40px;
+      background: var(--color-bg);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .intake-alt p {
+      margin: 0;
+      font-size: 16px;
+      color: var(--color-gray-700);
+    }
+    .intake-alt strong {
+      display: block;
+      font-size: 17px;
+      color: var(--color-navy);
+      margin-bottom: 4px;
+    }
+    .intake-alt-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 768px) {
+      .intake-intro { grid-template-columns: 1fr; }
+      .intake-badges { flex-direction: row; flex-wrap: wrap; }
+      .intake-alt { flex-direction: column; }
+      .gform-placeholder { padding: 40px 24px; }
+      .setup-steps { padding: 24px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html" class="logo"><img src="images/logo-company.png" alt="Sea Tax Services" class="logo-img" /><span class="logo-name">Sea Tax Services</span></a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="intake.html" class="nav-link active">Client Intake</a></li>
+          <li><a href="intake.html" class="btn btn-primary nav-cta">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-inner">
+          <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span>Client Intake</div>
+          <span class="eyebrow">New Client</span>
+          <h1>Let's get your <em>information</em> ready.</h1>
+          <p>Complete this short form so we can prepare your return accurately and efficiently. Takes about 5–10 minutes. Your information is kept strictly confidential.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="intake-wrapper">
+
+          <div class="intake-intro">
+            <div>
+              <h2>Before You Begin</h2>
+              <p>Have your documents nearby if possible — W-2s, 1099s, last year's return. You don't need them to submit, but they'll help you answer accurately. We'll follow up within <strong style="color:#fff;">1 business day</strong> to confirm receipt and next steps.</p>
+            </div>
+            <div class="intake-badges">
+              <div class="intake-badge"><span class="intake-badge-icon">🔒</span> Secure &amp; Confidential</div>
+              <div class="intake-badge"><span class="intake-badge-icon">✓</span> IRS Authorized</div>
+              <div class="intake-badge"><span class="intake-badge-icon">⚡</span> 1-Day Response</div>
+              <div class="intake-badge"><span class="intake-badge-icon">★</span> Free Consultation</div>
+            </div>
+          </div>
+
+          <!-- ============================================================
+               GOOGLE FORM EMBED
+               Replace the placeholder block below with your iframe tag.
+               Steps to get the iframe:
+               1. Go to forms.google.com and open your intake form
+               2. Click Send (paper plane icon, top right)
+               3. Click the < > Embed tab
+               4. Copy the iframe code
+               5. Delete the <div class="gform-placeholder">...</div> block
+               6. Paste your iframe inside the <div class="gform-container"> below
+               ============================================================ -->
+          <div class="gform-container">
+
+            <!-- DELETE THIS PLACEHOLDER BLOCK once you paste your Google Form iframe -->
+            <div class="gform-placeholder">
+              <span class="gform-placeholder-icon">📋</span>
+              <h3>Google Form Coming Soon</h3>
+              <p>Follow the steps below to embed your Google intake form here. Once set up, clients will fill it out directly on this page and responses go straight to your Gmail.</p>
+
+              <div class="setup-steps">
+                <h4>Setup Steps (5 minutes)</h4>
+                <ol>
+                  <li>Go to <strong>forms.google.com</strong> and sign in with your Google account (<code>seataxservice@gmail.com</code>).</li>
+                  <li>Click <strong>Blank Form</strong> and title it <em>"Sea Tax Services — Client Intake"</em>.</li>
+                  <li>Add the questions listed below (or copy from the suggested list).</li>
+                  <li>Click <strong>Send</strong> (paper airplane icon, top right) → click the <strong>&lt; &gt; Embed</strong> tab → copy the <code>iframe</code> code.</li>
+                  <li>Open <strong>intake.html</strong> in a text editor, find this placeholder section, delete it, and paste the iframe code in its place.</li>
+                  <li>In Google Forms → <strong>Responses</strong> tab → click the <strong>envelope icon</strong> to enable email notifications to <code>seataxservice@gmail.com</code>.</li>
+                </ol>
+              </div>
+
+              <div class="setup-steps" style="margin-top: 16px;">
+                <h4>Suggested Google Form Questions</h4>
+                <ol>
+                  <li><strong>Full Name</strong> — Short answer (required)</li>
+                  <li><strong>Email Address</strong> — Short answer (required)</li>
+                  <li><strong>Phone Number</strong> — Short answer</li>
+                  <li><strong>Tax Year Needed</strong> — Dropdown: 2024, 2023, 2022, Multiple Years</li>
+                  <li><strong>Filing Status</strong> — Multiple choice: Single, Married Filing Jointly, Married Filing Separately, Head of Household</li>
+                  <li><strong>Type of Return</strong> — Multiple choice: Individual, Small Business, Both</li>
+                  <li><strong>Income Sources</strong> — Checkboxes: W-2, Self-Employment/1099, Rental Income, Investments, Social Security, Retirement/Pension, Unemployment, Other</li>
+                  <li><strong>Deductions / Credits</strong> — Checkboxes: Homeowner, Charitable Donations, Student Loan Interest, Child/Dependent Care, Medical Expenses, Business Expenses, Energy Credits, None</li>
+                  <li><strong>Major Life Changes This Year</strong> — Checkboxes: Married/Divorced, New Child, Bought/Sold Home, Started a Business, Changed Jobs, Moved States, None</li>
+                  <li><strong>Business Type</strong> — Multiple choice (if applicable): Sole Proprietor, LLC, S-Corp, Partnership, Not Applicable</li>
+                  <li><strong>Documents You Have Ready</strong> — Checkboxes: W-2(s), 1099(s), Last Year's Return, Business Records, Bank Statements, None Yet</li>
+                  <li><strong>Preferred Contact Method</strong> — Multiple choice: Phone Call, Email, Text Message, Video Call</li>
+                  <li><strong>Best Time to Reach You</strong> — Short answer (e.g., "Weekday afternoons")</li>
+                  <li><strong>Additional Notes or Questions</strong> — Paragraph (optional)</li>
+                </ol>
+              </div>
+
+              <a href="https://forms.google.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top: 8px;">Open Google Forms →</a>
+            </div>
+            <!-- END PLACEHOLDER — delete above and paste your <iframe> here -->
+
+          </div>
+
+          <div class="intake-alt">
+            <div>
+              <strong>Prefer to reach out directly?</strong>
+              <p>Call, text, or email — we respond the same business day.</p>
+            </div>
+            <div class="intake-alt-links">
+              <a href="tel:+12066568685" class="btn btn-outline">(206) 656-8685</a>
+              <a href="mailto:seataxservice@gmail.com" class="btn btn-primary">Email Us</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo"><img src="images/logo-company.png" alt="Sea Tax Services" class="logo-img" /><span class="logo-name">Sea Tax Services</span></a>
+          <p>Accurate, personal, and proactive tax preparation for individuals and small businesses across the country.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="intake.html">Client Intake</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="services.html">Individual Returns</a></li>
+            <li><a href="services.html">Small Business</a></li>
+            <li><a href="services.html">Tax Planning</a></li>
+            <li><a href="services.html">Back Taxes</a></li>
+            <li><a href="services.html">Bookkeeping</a></li>
+            <li><a href="services.html">Payroll — OR &amp; WA</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <ul class="footer-contact">
+            <li><span class="contact-icon">✆</span><a href="tel:+12066568685">(206) 656-8685</a></li>
+            <li><span class="contact-icon">✉</span><span>seataxservice@gmail.com</span></li>
+            <li><span class="contact-icon">⌚</span><span>Mon–Fri, 9am–6pm</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div>&copy; <span id="current-year">2025</span> Sea Tax Services. All rights reserved.</div>
+        <div><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></div>
+      </div>
+      <p class="footer-disclaimer">Sea Tax Services is an IRS Authorized e-File Provider. All tax preparation is performed by credentialed professionals. Pricing starts at indicated rates and may vary based on return complexity.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+  <script src="js/main.js"></script>
+</body>
+</html>
