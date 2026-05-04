@@ -5,12 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Client Intake Form — Sea Tax Services</title>
   <meta name="description" content="New client intake form for Sea Tax Services. Securely submit your tax information to get started with your return." />
-  <meta name="keywords" content="tax intake form, new client tax form, tax document submission, Sea Tax Services intake" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://seataxservices.com/intake.html" />
-  <meta property="og:title" content="Client Intake Form — Sea Tax Services" />
-  <meta property="og:description" content="Submit your tax information securely to get started with Sea Tax Services." />
-  <meta property="og:image" content="https://seataxservices.com/images/Nghia.png" />
   <link rel="canonical" href="https://seataxservices.com/intake.html" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A2B4A'/%3E%3Ctext x='50%25' y='55%25' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -18,16 +12,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    /* ---- Intake page overrides ---- */
-    .intake-wrapper {
-      max-width: 860px;
-      margin: 0 auto;
-    }
+    /* ---- Intake layout ---- */
+    .intake-wrapper { max-width: 860px; margin: 0 auto; }
+
     .intake-intro {
       background: var(--color-navy);
       border-radius: var(--radius-lg);
-      padding: 36px 40px;
-      margin-bottom: 40px;
+      padding: 32px 40px;
+      margin-bottom: 36px;
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 32px;
@@ -36,145 +28,156 @@
     }
     .intake-intro h2 {
       color: var(--color-gold);
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
-    .intake-intro p {
-      color: rgba(255,255,255,0.85);
-      font-size: 16px;
-      margin: 0;
-      line-height: 1.6;
-    }
-    .intake-badges {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      min-width: 160px;
-    }
-    .intake-badge {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.8);
-      font-weight: 500;
-    }
-    .intake-badge-icon {
-      color: var(--color-gold);
-      font-size: 16px;
-    }
+    .intake-intro p { color: rgba(255,255,255,0.85); font-size: 15px; margin: 0; line-height: 1.6; }
+    .intake-badges { display: flex; flex-direction: column; gap: 10px; min-width: 156px; }
+    .intake-badge { display: flex; align-items: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 500; }
+    .intake-badge-icon { color: var(--color-gold); font-size: 15px; }
 
-    /* ---- Google Form embed ---- */
-    .gform-container {
+    /* ---- Form sections ---- */
+    .intake-form {
       background: #fff;
       border: 1px solid var(--color-gray-200);
       border-radius: var(--radius-lg);
-      overflow: hidden;
       box-shadow: var(--shadow-md);
+      overflow: hidden;
     }
-    .gform-container iframe {
-      width: 100%;
-      min-height: 1800px;
-      border: none;
-      display: block;
+    .form-section {
+      padding: 36px 40px;
+      border-bottom: 1px solid var(--color-gray-200);
+    }
+    .form-section:last-of-type { border-bottom: none; }
+    .form-section-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .form-section-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-gold-soft);
+      border: 2px solid var(--color-gold);
+      color: var(--color-navy);
+      font-family: var(--font-heading);
+      font-size: 16px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .form-section-title {
+      font-family: var(--font-heading);
+      font-size: 20px;
+      color: var(--color-navy);
+      font-weight: 600;
+      margin: 0;
+    }
+    .form-section-subtitle {
+      font-size: 13px;
+      color: var(--color-gray-500);
+      margin-top: 2px;
     }
 
-    /* ---- Setup placeholder (shown until Google Form is embedded) ---- */
-    .gform-placeholder {
-      padding: 60px 40px;
-      text-align: center;
+    /* ---- Checkbox / radio groups ---- */
+    .check-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px 24px;
+      margin-top: 4px;
     }
-    .gform-placeholder-icon {
-      font-size: 56px;
-      margin-bottom: 20px;
-      display: block;
-    }
-    .gform-placeholder h3 {
-      font-size: 24px;
-      color: var(--color-navy);
-      margin-bottom: 12px;
-    }
-    .gform-placeholder p {
-      color: var(--color-gray-600);
-      max-width: 480px;
-      margin: 0 auto 28px;
-    }
-    .setup-steps {
-      text-align: left;
-      background: var(--color-bg);
-      border-radius: var(--radius-md);
-      padding: 28px 32px;
-      max-width: 560px;
-      margin: 0 auto 28px;
-    }
-    .setup-steps h4 {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-gold);
-      margin-bottom: 16px;
-    }
-    .setup-steps ol {
-      list-style: decimal;
-      padding-left: 20px;
+    .check-group.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .check-label {
       display: flex;
-      flex-direction: column;
+      align-items: center;
       gap: 10px;
-    }
-    .setup-steps ol li {
       font-size: 15px;
       color: var(--color-gray-700);
-      line-height: 1.5;
-    }
-    .setup-steps ol li strong {
-      color: var(--color-navy);
-    }
-    .setup-steps code {
-      background: #fff;
+      cursor: pointer;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
       border: 1px solid var(--color-gray-200);
-      border-radius: 4px;
-      padding: 2px 6px;
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+      user-select: none;
+    }
+    .check-label:hover { border-color: var(--color-gold); background: var(--color-gold-soft); }
+    .check-label input[type="checkbox"],
+    .check-label input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--color-gold);
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .check-label input:checked + span { color: var(--color-navy); font-weight: 500; }
+    .check-label:has(input:checked) { border-color: var(--color-gold); background: var(--color-gold-soft); }
+
+    /* ---- Inline form helpers ---- */
+    .form-field-note {
       font-size: 13px;
-      color: var(--color-navy);
+      color: var(--color-gray-500);
+      margin-top: 6px;
+      font-style: italic;
     }
 
-    /* ---- Alternative contact strip ---- */
-    .intake-alt {
-      margin-top: 40px;
+    /* ---- Form footer / submit ---- */
+    .form-footer {
+      background: var(--color-bg);
       padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .form-footer-note { font-size: 14px; color: var(--color-gray-600); }
+    .form-footer-note span { color: var(--color-gold); font-weight: 600; }
+
+    /* ---- Success state ---- */
+    .form-success {
+      display: none;
+      padding: 64px 40px;
+      text-align: center;
+    }
+    .form-success.visible { display: block; }
+    .success-icon { font-size: 56px; display: block; margin-bottom: 20px; }
+    .form-success h2 { color: var(--color-navy); margin-bottom: 12px; }
+    .form-success p { color: var(--color-gray-600); max-width: 480px; margin: 0 auto 28px; font-size: 16px; }
+
+    /* ---- Bottom strip ---- */
+    .intake-alt {
+      margin-top: 32px;
+      padding: 28px 36px;
       background: var(--color-bg);
       border-radius: var(--radius-lg);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 20px;
       flex-wrap: wrap;
     }
-    .intake-alt p {
-      margin: 0;
-      font-size: 16px;
-      color: var(--color-gray-700);
-    }
-    .intake-alt strong {
-      display: block;
-      font-size: 17px;
-      color: var(--color-navy);
-      margin-bottom: 4px;
-    }
-    .intake-alt-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+    .intake-alt p { margin: 0; font-size: 15px; color: var(--color-gray-700); }
+    .intake-alt strong { display: block; font-size: 16px; color: var(--color-navy); margin-bottom: 3px; }
+    .intake-alt-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
+    /* ---- Responsive ---- */
     @media (max-width: 768px) {
       .intake-intro { grid-template-columns: 1fr; }
       .intake-badges { flex-direction: row; flex-wrap: wrap; }
+      .form-section { padding: 28px 24px; }
+      .form-footer { padding: 24px; flex-direction: column; align-items: stretch; }
+      .check-group { grid-template-columns: 1fr; }
+      .check-group.cols-3 { grid-template-columns: 1fr 1fr; }
       .intake-alt { flex-direction: column; }
-      .gform-placeholder { padding: 40px 24px; }
-      .setup-steps { padding: 24px 20px; }
+    }
+    @media (max-width: 480px) {
+      .check-group.cols-3 { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -204,7 +207,7 @@
           <div class="breadcrumb"><a href="index.html">Home</a><span class="breadcrumb-sep">/</span>Client Intake</div>
           <span class="eyebrow">New Client</span>
           <h1>Let's get your <em>information</em> ready.</h1>
-          <p>Complete this short form so we can prepare your return accurately and efficiently. Takes about 5–10 minutes. Your information is kept strictly confidential.</p>
+          <p>Complete this form so we can prepare your return accurately and efficiently. Takes about 5–10 minutes. Your information is kept strictly confidential.</p>
         </div>
       </div>
     </section>
@@ -216,7 +219,7 @@
           <div class="intake-intro">
             <div>
               <h2>Before You Begin</h2>
-              <p>Have your documents nearby if possible — W-2s, 1099s, last year's return. You don't need them to submit, but they'll help you answer accurately. We'll follow up within <strong style="color:#fff;">1 business day</strong> to confirm receipt and next steps.</p>
+              <p>Have your documents nearby if possible — W-2s, 1099s, last year's return. You don't need them to submit, but they'll help you answer more accurately. We'll follow up within <strong style="color:#fff;">1 business day</strong> to confirm receipt and next steps.</p>
             </div>
             <div class="intake-badges">
               <div class="intake-badge"><span class="intake-badge-icon">🔒</span> Secure &amp; Confidential</div>
@@ -226,61 +229,316 @@
             </div>
           </div>
 
-          <!-- ============================================================
-               GOOGLE FORM EMBED
-               Replace the placeholder block below with your iframe tag.
-               Steps to get the iframe:
-               1. Go to forms.google.com and open your intake form
-               2. Click Send (paper plane icon, top right)
-               3. Click the < > Embed tab
-               4. Copy the iframe code
-               5. Delete the <div class="gform-placeholder">...</div> block
-               6. Paste your iframe inside the <div class="gform-container"> below
-               ============================================================ -->
-          <div class="gform-container">
+          <div class="intake-form" id="intake-form-wrapper">
+            <form id="intake-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
+              <!-- Web3Forms hidden fields -->
+              <input type="hidden" name="access_key" value="7d92ef18-41e4-4e6f-b4eb-3e315d62618f" />
+              <input type="hidden" name="subject" value="New Client Intake — Sea Tax Services" />
+              <input type="hidden" name="from_name" value="Sea Tax Services Intake Form" />
+              <input type="hidden" name="redirect" value="https://seataxservices.com/intake.html?submitted=1" />
 
-            <!-- DELETE THIS PLACEHOLDER BLOCK once you paste your Google Form iframe -->
-            <div class="gform-placeholder">
-              <span class="gform-placeholder-icon">📋</span>
-              <h3>Google Form Coming Soon</h3>
-              <p>Follow the steps below to embed your Google intake form here. Once set up, clients will fill it out directly on this page and responses go straight to your Gmail.</p>
-
-              <div class="setup-steps">
-                <h4>Setup Steps (5 minutes)</h4>
-                <ol>
-                  <li>Go to <strong>forms.google.com</strong> and sign in with your Google account (<code>seataxservice@gmail.com</code>).</li>
-                  <li>Click <strong>Blank Form</strong> and title it <em>"Sea Tax Services — Client Intake"</em>.</li>
-                  <li>Add the questions listed below (or copy from the suggested list).</li>
-                  <li>Click <strong>Send</strong> (paper airplane icon, top right) → click the <strong>&lt; &gt; Embed</strong> tab → copy the <code>iframe</code> code.</li>
-                  <li>Open <strong>intake.html</strong> in a text editor, find this placeholder section, delete it, and paste the iframe code in its place.</li>
-                  <li>In Google Forms → <strong>Responses</strong> tab → click the <strong>envelope icon</strong> to enable email notifications to <code>seataxservice@gmail.com</code>.</li>
-                </ol>
+              <!-- ===== SECTION 1: Personal Info ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">1</div>
+                  <div>
+                    <div class="form-section-title">Personal Information</div>
+                    <div class="form-section-subtitle">Your basic contact details</div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="first-name">First Name <span class="required">*</span></label>
+                    <input type="text" id="first-name" name="first_name" required autocomplete="given-name" />
+                    <span class="form-error">Please enter your first name.</span>
+                  </div>
+                  <div class="form-field">
+                    <label for="last-name">Last Name <span class="required">*</span></label>
+                    <input type="text" id="last-name" name="last_name" required autocomplete="family-name" />
+                    <span class="form-error">Please enter your last name.</span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="email">Email Address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required autocomplete="email" />
+                    <span class="form-error">Please enter a valid email address.</span>
+                  </div>
+                  <div class="form-field">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="(206) 555-1234" />
+                    <span class="form-error">Please enter your phone number.</span>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" name="date_of_birth" />
+                  </div>
+                  <div class="form-field">
+                    <label for="address">City &amp; State</label>
+                    <input type="text" id="address" name="city_state" placeholder="e.g., Bothell, WA" autocomplete="address-level2" />
+                  </div>
+                </div>
               </div>
 
-              <div class="setup-steps" style="margin-top: 16px;">
-                <h4>Suggested Google Form Questions</h4>
-                <ol>
-                  <li><strong>Full Name</strong> — Short answer (required)</li>
-                  <li><strong>Email Address</strong> — Short answer (required)</li>
-                  <li><strong>Phone Number</strong> — Short answer</li>
-                  <li><strong>Tax Year Needed</strong> — Dropdown: 2024, 2023, 2022, Multiple Years</li>
-                  <li><strong>Filing Status</strong> — Multiple choice: Single, Married Filing Jointly, Married Filing Separately, Head of Household</li>
-                  <li><strong>Type of Return</strong> — Multiple choice: Individual, Small Business, Both</li>
-                  <li><strong>Income Sources</strong> — Checkboxes: W-2, Self-Employment/1099, Rental Income, Investments, Social Security, Retirement/Pension, Unemployment, Other</li>
-                  <li><strong>Deductions / Credits</strong> — Checkboxes: Homeowner, Charitable Donations, Student Loan Interest, Child/Dependent Care, Medical Expenses, Business Expenses, Energy Credits, None</li>
-                  <li><strong>Major Life Changes This Year</strong> — Checkboxes: Married/Divorced, New Child, Bought/Sold Home, Started a Business, Changed Jobs, Moved States, None</li>
-                  <li><strong>Business Type</strong> — Multiple choice (if applicable): Sole Proprietor, LLC, S-Corp, Partnership, Not Applicable</li>
-                  <li><strong>Documents You Have Ready</strong> — Checkboxes: W-2(s), 1099(s), Last Year's Return, Business Records, Bank Statements, None Yet</li>
-                  <li><strong>Preferred Contact Method</strong> — Multiple choice: Phone Call, Email, Text Message, Video Call</li>
-                  <li><strong>Best Time to Reach You</strong> — Short answer (e.g., "Weekday afternoons")</li>
-                  <li><strong>Additional Notes or Questions</strong> — Paragraph (optional)</li>
-                </ol>
+              <!-- ===== SECTION 2: Filing Info ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">2</div>
+                  <div>
+                    <div class="form-section-title">Filing Information</div>
+                    <div class="form-section-subtitle">Tell us about your return</div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="tax-year">Tax Year Needed <span class="required">*</span></label>
+                    <select id="tax-year" name="tax_year" required>
+                      <option value="">Select year...</option>
+                      <option value="2024">2024</option>
+                      <option value="2023">2023</option>
+                      <option value="2022">2022</option>
+                      <option value="2021">2021</option>
+                      <option value="Multiple years">Multiple Years</option>
+                    </select>
+                    <span class="form-error">Please select a tax year.</span>
+                  </div>
+                  <div class="form-field">
+                    <label for="return-type">Type of Return <span class="required">*</span></label>
+                    <select id="return-type" name="return_type" required>
+                      <option value="">Select type...</option>
+                      <option value="Individual">Individual</option>
+                      <option value="Small Business">Small Business</option>
+                      <option value="Individual + Business">Both — Individual &amp; Business</option>
+                      <option value="Not sure">Not Sure Yet</option>
+                    </select>
+                    <span class="form-error">Please select a return type.</span>
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label>Filing Status <span class="required">*</span></label>
+                  <div class="check-group cols-3" style="margin-top: 10px;">
+                    <label class="check-label"><input type="radio" name="filing_status" value="Single" required /><span>Single</span></label>
+                    <label class="check-label"><input type="radio" name="filing_status" value="Married Filing Jointly" /><span>Married Filing Jointly</span></label>
+                    <label class="check-label"><input type="radio" name="filing_status" value="Married Filing Separately" /><span>Married Filing Separately</span></label>
+                    <label class="check-label"><input type="radio" name="filing_status" value="Head of Household" /><span>Head of Household</span></label>
+                    <label class="check-label"><input type="radio" name="filing_status" value="Qualifying Surviving Spouse" /><span>Qualifying Surviving Spouse</span></label>
+                    <label class="check-label"><input type="radio" name="filing_status" value="Not sure" /><span>Not Sure</span></label>
+                  </div>
+                </div>
+                <div class="form-field" style="margin-top: 20px;">
+                  <label for="num-dependents">Number of Dependents</label>
+                  <select id="num-dependents" name="num_dependents">
+                    <option value="0">0 — None</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4+">4 or more</option>
+                  </select>
+                </div>
               </div>
 
-              <a href="https://forms.google.com" target="_blank" rel="noopener" class="btn btn-primary btn-lg" style="margin-top: 8px;">Open Google Forms →</a>
+              <!-- ===== SECTION 3: Income Sources ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">3</div>
+                  <div>
+                    <div class="form-section-title">Income Sources</div>
+                    <div class="form-section-subtitle">Check all that apply for this tax year</div>
+                  </div>
+                </div>
+                <div class="check-group">
+                  <label class="check-label"><input type="checkbox" name="income[]" value="W-2 Wages / Salary" /><span>W-2 Wages / Salary</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Self-Employment / 1099-NEC" /><span>Self-Employment / 1099-NEC</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Freelance / Contract Work" /><span>Freelance / Contract Work</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Business Income (Schedule C)" /><span>Business Income (Schedule C)</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Rental Income" /><span>Rental Income</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Investments / Capital Gains (1099-B)" /><span>Investments / Capital Gains</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Cryptocurrency" /><span>Cryptocurrency</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Social Security Benefits" /><span>Social Security Benefits</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Retirement / Pension (1099-R)" /><span>Retirement / Pension (1099-R)</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Unemployment Income" /><span>Unemployment Income</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Alimony Received" /><span>Alimony Received</span></label>
+                  <label class="check-label"><input type="checkbox" name="income[]" value="Foreign Income" /><span>Foreign Income</span></label>
+                </div>
+                <div class="form-field" style="margin-top: 20px;">
+                  <label for="income-other">Other Income (describe)</label>
+                  <input type="text" id="income-other" name="income_other" placeholder="e.g., gambling winnings, trust income..." />
+                </div>
+              </div>
+
+              <!-- ===== SECTION 4: Deductions & Credits ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">4</div>
+                  <div>
+                    <div class="form-section-title">Deductions &amp; Credits</div>
+                    <div class="form-section-subtitle">Check all that may apply — we'll verify eligibility</div>
+                  </div>
+                </div>
+                <div class="check-group">
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Homeowner (mortgage interest, property tax)" /><span>Homeowner (mortgage &amp; property tax)</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Charitable Donations" /><span>Charitable Donations</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Student Loan Interest" /><span>Student Loan Interest</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Child / Dependent Care Expenses" /><span>Child / Dependent Care</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Medical Expenses" /><span>Medical Expenses</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Business Expenses (vehicle, home office, equipment)" /><span>Business Expenses</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Education Credits (1098-T)" /><span>Education Credits (1098-T)</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Energy Efficient Home Credits" /><span>Energy Efficient Home Credits</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="IRA / HSA Contributions" /><span>IRA / HSA Contributions</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Child Tax Credit" /><span>Child Tax Credit</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="Earned Income Credit (EIC)" /><span>Earned Income Credit (EIC)</span></label>
+                  <label class="check-label"><input type="checkbox" name="deductions[]" value="None / Not sure" /><span>None / Not Sure</span></label>
+                </div>
+              </div>
+
+              <!-- ===== SECTION 5: Life Changes ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">5</div>
+                  <div>
+                    <div class="form-section-title">Major Life Changes This Year</div>
+                    <div class="form-section-subtitle">These can significantly affect your return</div>
+                  </div>
+                </div>
+                <div class="check-group">
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="Got married or divorced" /><span>Got Married or Divorced</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="New child (born or adopted)" /><span>New Child (born or adopted)</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="Bought or sold a home" /><span>Bought or Sold a Home</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="Started or closed a business" /><span>Started or Closed a Business</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="Changed jobs or lost employment" /><span>Changed Jobs / Lost Employment</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="Moved to a different state" /><span>Moved to a Different State</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="Received an inheritance or large gift" /><span>Received Inheritance or Large Gift</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="IRS notice or audit" /><span>Received an IRS Notice / Audit</span></label>
+                  <label class="check-label"><input type="checkbox" name="life_changes[]" value="None" /><span>None of These</span></label>
+                </div>
+              </div>
+
+              <!-- ===== SECTION 6: Business Info ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">6</div>
+                  <div>
+                    <div class="form-section-title">Business Information</div>
+                    <div class="form-section-subtitle">Skip this section if you have no business income</div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="biz-name">Business Name</label>
+                    <input type="text" id="biz-name" name="business_name" placeholder="Leave blank if N/A" />
+                  </div>
+                  <div class="form-field">
+                    <label for="biz-type">Business Entity Type</label>
+                    <select id="biz-type" name="business_type">
+                      <option value="">Select type...</option>
+                      <option value="Sole Proprietor (Schedule C)">Sole Proprietor (Schedule C)</option>
+                      <option value="Single-Member LLC">Single-Member LLC</option>
+                      <option value="Multi-Member LLC">Multi-Member LLC</option>
+                      <option value="S-Corporation">S-Corporation</option>
+                      <option value="C-Corporation">C-Corporation</option>
+                      <option value="Partnership">Partnership</option>
+                      <option value="Not applicable">Not Applicable</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="biz-industry">Industry / Type of Work</label>
+                    <input type="text" id="biz-industry" name="business_industry" placeholder="e.g., Consulting, Retail, Real Estate..." />
+                  </div>
+                  <div class="form-field">
+                    <label for="biz-ein">EIN (optional)</label>
+                    <input type="text" id="biz-ein" name="business_ein" placeholder="xx-xxxxxxx" />
+                    <div class="form-field-note">Not required — skip if you don't have it handy.</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ===== SECTION 7: Documents ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">7</div>
+                  <div>
+                    <div class="form-section-title">Documents You Have Ready</div>
+                    <div class="form-section-subtitle">Check anything you currently have — we'll let you know what else is needed</div>
+                  </div>
+                </div>
+                <div class="check-group">
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="W-2(s) from employer(s)" /><span>W-2(s) from Employer(s)</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="1099 forms (NEC, INT, DIV, B, R, etc.)" /><span>1099 Forms</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="Prior year tax return" /><span>Prior Year Tax Return</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="Business income & expense records" /><span>Business Income &amp; Expense Records</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="Bank / brokerage statements" /><span>Bank / Brokerage Statements</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="Mortgage interest statement (1098)" /><span>Mortgage Interest Statement (1098)</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="Charitable donation receipts" /><span>Charitable Donation Receipts</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="Medical expense records" /><span>Medical Expense Records</span></label>
+                  <label class="check-label"><input type="checkbox" name="documents[]" value="None yet — I'll gather them" /><span>None Yet — I'll Gather Them</span></label>
+                </div>
+              </div>
+
+              <!-- ===== SECTION 8: Preferences & Notes ===== -->
+              <div class="form-section">
+                <div class="form-section-header">
+                  <div class="form-section-num">8</div>
+                  <div>
+                    <div class="form-section-title">Preferences &amp; Notes</div>
+                    <div class="form-section-subtitle">How would you like us to reach you?</div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="form-field">
+                    <label for="contact-pref">Preferred Contact Method <span class="required">*</span></label>
+                    <select id="contact-pref" name="contact_preference" required>
+                      <option value="">Select preference...</option>
+                      <option value="Phone call">Phone Call</option>
+                      <option value="Text message">Text Message</option>
+                      <option value="Email">Email</option>
+                      <option value="Video call (Zoom / Google Meet)">Video Call (Zoom / Google Meet)</option>
+                    </select>
+                    <span class="form-error">Please select a contact preference.</span>
+                  </div>
+                  <div class="form-field">
+                    <label for="best-time">Best Time to Reach You</label>
+                    <input type="text" id="best-time" name="best_time" placeholder="e.g., Weekday mornings, after 5pm..." />
+                  </div>
+                </div>
+                <div class="form-field">
+                  <label for="how-heard">How Did You Hear About Us?</label>
+                  <select id="how-heard" name="how_heard">
+                    <option value="">Select one...</option>
+                    <option value="Google Search">Google Search</option>
+                    <option value="Friend / Family Referral">Friend / Family Referral</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Yelp">Yelp</option>
+                    <option value="Returning client">Returning Client</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="notes">Additional Notes or Questions</label>
+                  <textarea id="notes" name="notes" placeholder="Any special circumstances, questions, or things we should know before we speak..."></textarea>
+                </div>
+              </div>
+
+              <!-- ===== Submit ===== -->
+              <div class="form-footer">
+                <div class="form-footer-note">
+                  Fields marked <span>*</span> are required. Your information is never shared or sold.
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-arrow">Submit Intake Form</button>
+              </div>
+            </form>
+
+            <!-- Success message -->
+            <div class="form-success" id="form-success" role="status" aria-live="polite">
+              <span class="success-icon">✅</span>
+              <h2>We've received your intake!</h2>
+              <p>Thank you for submitting your information. We'll review everything and be in touch within <strong>1 business day</strong> to confirm the next steps and answer any questions.</p>
+              <p style="margin-top: 16px;">In the meantime, you can reach us directly at <a href="tel:+12066568685" style="color: var(--color-gold); font-weight: 600;">(206) 656-8685</a> or <a href="mailto:seataxservice@gmail.com" style="color: var(--color-gold); font-weight: 600;">seataxservice@gmail.com</a>.</p>
+              <a href="index.html" class="btn btn-outline" style="margin-top: 12px;">Back to Home</a>
             </div>
-            <!-- END PLACEHOLDER — delete above and paste your <iframe> here -->
-
           </div>
 
           <div class="intake-alt">
@@ -347,5 +605,32 @@
 
   <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
   <script src="js/main.js"></script>
+  <script>
+    // Show success message if redirected back after Web3Forms submit
+    if (new URLSearchParams(window.location.search).get('submitted') === '1') {
+      document.getElementById('intake-form').style.display = 'none';
+      document.getElementById('form-success').classList.add('visible');
+    }
+
+    // Client-side validation
+    document.getElementById('intake-form').addEventListener('submit', function(e) {
+      let valid = true;
+      this.querySelectorAll('[required]').forEach(function(field) {
+        const group = field.closest('.form-field');
+        if (!field.value.trim()) {
+          valid = false;
+          if (group) group.classList.add('error');
+        } else {
+          if (group) group.classList.remove('error');
+        }
+      });
+      // Filing status radio validation
+      const statusPicked = document.querySelector('input[name="filing_status"]:checked');
+      if (!statusPicked) {
+        valid = false;
+      }
+      if (!valid) e.preventDefault();
+    });
+  </script>
 </body>
 </html>
