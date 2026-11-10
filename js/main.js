@@ -172,6 +172,11 @@
       if (!field) return true;
       var value = (input.value || '').trim();
 
+      if (input.type === 'checkbox') {
+        var ok = !input.hasAttribute('required') || input.checked;
+        setError(field, !ok);
+        return ok;
+      }
       if (input.hasAttribute('required') && !value) {
         setError(field, true);
         return false;

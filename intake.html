@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Client Intake Form — Sea Tax Services</title>
-  <meta name="description" content="New client intake form for Sea Tax Services. Securely submit your tax information to get started with your return." />
+  <meta name="description" content="New client intake form for Sea Tax Services. Tell us about your tax situation to get started with your return." />
   <link rel="canonical" href="https://seataxservices.com/intake.html" />
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231A2B4A'/%3E%3Ctext x='50%25' y='55%25' font-family='Georgia,serif' font-size='20' font-weight='700' fill='%23C8960C' text-anchor='middle' dominant-baseline='middle'%3ES%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -119,6 +119,21 @@
     .check-label:has(input:checked) { border-color: var(--color-gold); background: var(--color-gold-soft); }
 
     /* ---- Inline form helpers ---- */
+    .sensitive-warning {
+      margin: 28px 40px 0;
+      padding: 16px 20px;
+      background: #FFF8E6;
+      border: 1px solid var(--color-gold);
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--color-gray-700);
+    }
+    .sensitive-warning strong { display: block; color: var(--color-navy); margin-bottom: 4px; }
+    .consent-label { align-items: flex-start; }
+    .consent-label input[type="checkbox"] { margin-top: 2px; }
+    .consent-label a { color: var(--color-navy); text-decoration: underline; }
+    .consent-field.error .consent-label { border-color: #C0392B; }
     .form-field-note {
       font-size: 13px;
       color: var(--color-gray-500);
@@ -222,8 +237,8 @@
               <p>Have your documents nearby if possible — W-2s, 1099s, last year's return. You don't need them to submit, but they'll help you answer more accurately. We'll follow up within <strong style="color:#fff;">1 business day</strong> to confirm receipt and next steps.</p>
             </div>
             <div class="intake-badges">
-              <div class="intake-badge"><span class="intake-badge-icon">🔒</span> Secure &amp; Confidential</div>
-              <div class="intake-badge"><span class="intake-badge-icon">✓</span> IRS Authorized</div>
+              <div class="intake-badge"><span class="intake-badge-icon">🔒</span> Confidential</div>
+              <div class="intake-badge"><span class="intake-badge-icon">✓</span> Enrolled Agent</div>
               <div class="intake-badge"><span class="intake-badge-icon">⚡</span> 1-Day Response</div>
               <div class="intake-badge"><span class="intake-badge-icon">★</span> Free Consultation</div>
             </div>
@@ -236,6 +251,12 @@
               <input type="hidden" name="subject" value="New Client Intake — Sea Tax Services" />
               <input type="hidden" name="from_name" value="Sea Tax Services Intake Form" />
               <input type="hidden" name="redirect" value="https://seataxservices.com/intake.html?submitted=1" />
+              <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off" />
+
+              <div class="sensitive-warning" role="note">
+                <strong>Please do not enter sensitive numbers on this form.</strong>
+                Do not type Social Security numbers, ITINs, bank or card numbers, or IRS PINs anywhere on this page. We'll collect those later through a secure channel.
+              </div>
 
               <!-- ===== SECTION 1: Personal Info ===== -->
               <div class="form-section">
@@ -270,15 +291,9 @@
                     <span class="form-error">Please enter your phone number.</span>
                   </div>
                 </div>
-                <div class="form-row">
-                  <div class="form-field">
-                    <label for="dob">Date of Birth</label>
-                    <input type="date" id="dob" name="date_of_birth" />
-                  </div>
-                  <div class="form-field">
-                    <label for="address">City &amp; State</label>
-                    <input type="text" id="address" name="city_state" placeholder="e.g., Bothell, WA" autocomplete="address-level2" />
-                  </div>
+                <div class="form-field">
+                  <label for="address">City &amp; State</label>
+                  <input type="text" id="address" name="city_state" placeholder="e.g., Bothell, WA" autocomplete="address-level2" />
                 </div>
               </div>
 
@@ -296,10 +311,11 @@
                     <label for="tax-year">Tax Year Needed <span class="required">*</span></label>
                     <select id="tax-year" name="tax_year" required>
                       <option value="">Select year...</option>
+                      <option value="2026">2026 (filing in 2027)</option>
+                      <option value="2025">2025</option>
                       <option value="2024">2024</option>
                       <option value="2023">2023</option>
-                      <option value="2022">2022</option>
-                      <option value="2021">2021</option>
+                      <option value="Earlier year">Earlier Year</option>
                       <option value="Multiple years">Multiple Years</option>
                     </select>
                     <span class="form-error">Please select a tax year.</span>
@@ -449,9 +465,8 @@
                     <input type="text" id="biz-industry" name="business_industry" placeholder="e.g., Consulting, Retail, Real Estate..." />
                   </div>
                   <div class="form-field">
-                    <label for="biz-ein">EIN (optional)</label>
-                    <input type="text" id="biz-ein" name="business_ein" placeholder="xx-xxxxxxx" />
-                    <div class="form-field-note">Not required — skip if you don't have it handy.</div>
+                    <label for="biz-years">Years in Business</label>
+                    <input type="text" id="biz-years" name="business_years" placeholder="e.g., 3" />
                   </div>
                 </div>
               </div>
@@ -519,13 +534,21 @@
                 <div class="form-field">
                   <label for="notes">Additional Notes or Questions</label>
                   <textarea id="notes" name="notes" placeholder="Any special circumstances, questions, or things we should know before we speak..."></textarea>
+                  <div class="form-field-note">Please don't include Social Security numbers or account numbers here.</div>
+                </div>
+                <div class="form-field consent-field" style="margin-top: 20px;">
+                  <label class="check-label consent-label">
+                    <input type="checkbox" id="consent" name="privacy_consent" value="Agreed to Privacy Policy" required />
+                    <span>I agree that Sea Tax Services may use the information I submit here to contact me about tax services, as described in the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>. I understand that submitting this form does not create a client engagement. <span class="required">*</span></span>
+                  </label>
+                  <span class="form-error">Please confirm you agree before submitting.</span>
                 </div>
               </div>
 
               <!-- ===== Submit ===== -->
               <div class="form-footer">
                 <div class="form-footer-note">
-                  Fields marked <span>*</span> are required. Your information is never shared or sold.
+                  Fields marked <span>*</span> are required. We never sell your information. Submissions are delivered to us by our form provider, Web3Forms.
                 </div>
                 <button type="submit" class="btn btn-primary btn-lg btn-arrow">Submit Intake Form</button>
               </div>
@@ -597,9 +620,9 @@
       </div>
       <div class="footer-bottom">
         <div>&copy; <span id="current-year">2025</span> Sea Tax Services. All rights reserved.</div>
-        <div><a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Terms</a></div>
+        <div><a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms.html">Terms of Use</a></div>
       </div>
-      <p class="footer-disclaimer">Sea Tax Services is an IRS Authorized e-File Provider. All tax preparation is performed by credentialed professionals. Pricing starts at indicated rates and may vary based on return complexity.</p>
+      <p class="footer-disclaimer">Nghia Le is an Enrolled Agent, enrolled to practice before the Internal Revenue Service. Sea Tax Services is an IRS Authorized e-File Provider. Sea Tax Services is not affiliated with or endorsed by the IRS or any government agency. Prices shown are starting rates; your final fee depends on the complexity of your return and will be confirmed before work begins. Refund amounts depend on your individual tax situation and are not guaranteed. Information on this website is general and is not tax or legal advice for your specific situation.</p>
     </div>
   </footer>
 
@@ -617,7 +640,9 @@
       let valid = true;
       this.querySelectorAll('[required]').forEach(function(field) {
         const group = field.closest('.form-field');
-        if (!field.value.trim()) {
+        if (field.type === 'radio') return; // radio group checked below
+        const empty = field.type === 'checkbox' ? !field.checked : !field.value.trim();
+        if (empty) {
           valid = false;
           if (group) group.classList.add('error');
         } else {
